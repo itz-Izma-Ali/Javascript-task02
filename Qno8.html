@@ -1,0 +1,31 @@
+<!-- 8. Write a function that takes an object and saves each property to
+localStorage using the property name as the key and the property value as
+the value. The function should also retrieve the object from localStorage
+and return it as a new object. -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Save and retrieve object </title>
+  </head>
+  <body>
+    <script>
+      function saveObjectToLocalStorage(obj) {
+        for (const [key, value] of Object.entries(obj)) {
+          localStorage.setItem(key, value);
+        }
+
+        const newObj = {};
+        for (const [key] of Object.entries(obj)) {
+          newObj[key] = localStorage.getItem(key);
+        }
+
+        return newObj;
+      }
+
+      const myObj = { name: "Izma Ali", age: 18 };
+      const retrievedObj = saveObjectToLocalStorage(myObj);
+      console.log(retrievedObj);
+    </script>
+  </body>
+</html>
